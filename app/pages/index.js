@@ -62,6 +62,13 @@ export default function Dashboard() {
       }
     }
   };
+  const handleSortClick = () => {
+  setLoading(true);
+  setTimeout(() => {
+    toggleSortOrder();
+    setLoading(false);
+  }, 2000);
+};
 
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
@@ -107,12 +114,15 @@ export default function Dashboard() {
       </button>
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 mt-3 bg-white shadow-md rounded-xl p-4">
   <div className="flex items-center space-x-4">
-    <button
-      onClick={toggleSortOrder}
-      className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 py-2 rounded-lg font-semibold shadow hover:from-blue-600 hover:to-blue-800 transition duration-300"
-    >
-      Sort by Expiry: {sortOrder === "asc" ? "⬆ Ascending" : "⬇ Descending"}
-    </button>
+
+    
+  <button
+    onClick={handleSortClick}
+    className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 py-2 rounded-lg font-semibold shadow hover:from-blue-600 hover:to-blue-800 transition duration-300"
+  >
+    Sort by Expiry: {sortOrder === "asc" ? "⬆ Ascending" : "⬇ Descending"}
+  </button>
+
 
     <label className="flex items-center space-x-2 text-gray-700 font-medium">
       <input
